@@ -2,6 +2,8 @@ import React from 'react';
 import './App.css';
 import Logo from "./components/Logo/Logo";
 import CardList from "./components/CardList/CardList";
+import Search from "./components/Search/Search";
+import Scroll from "./components/Scroll/Scroll";
 
 class App extends React.Component {
   constructor() {
@@ -17,7 +19,8 @@ class App extends React.Component {
         "https://vignette.wikia.nocookie.net/disney/images/8/84/BeruWhitesunLars.jpg/revision/latest?cb=20121227005055",
         "https://lumiere-a.akamaihd.net/v1/images/r5-d4_main_image_7d5f078e.jpeg?region=374%2C0%2C1186%2C666&width=960",
         "https://vignette.wikia.nocookie.net/starwars/images/0/00/BiggsHS-ANH.png/revision/latest?cb=20130305010406"
-      ]
+      ],
+      searchfield: ""
     }
   }
 
@@ -30,7 +33,7 @@ class App extends React.Component {
       }
       return name;
     }
-    
+
     for (let i = 1; i < 10; i++) {
       if (i === 5) {
         continue; 
@@ -51,13 +54,29 @@ class App extends React.Component {
     }
   }
 
+  onSearchChange = (event) => {
+    this.setState({searchfield: event.target.value});
+  }
+
   render() {
-    const {people, images} = this.state;
+    const {people, images, searchfield} = this.state;
+
+    const filteredPeople = [];
+    const filteredImages = [];
+    for (let i = 0; i < people.length; i++) {
+      if (people[i].name.toLowerCase().includes(searchfield.toLowerCase())) {
+        filteredPeople.push(people[i]);
+        filteredImages.push(images[i]);
+      }
+    }
 
     return (
-      <div className="App">
+      <div className="App mb2">
         <Logo />
-        <CardList people={people} images={images}/>
+        <Search onSearchChange={this.onSearchChange}/>
+        <Scroll>
+          <CardList people={filteredPeople} images={filteredImages} />
+        </Scroll> 
       </div>
     );
   }
