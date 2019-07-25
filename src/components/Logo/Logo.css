@@ -1,7 +1,15 @@
+.title-header {
+    margin-left: 5%;
+    width: 65%;
+}
+
 #title {
-    color: white;
-    width: 67%;
-    text-align: left;
+    color: white; 
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    text-align: left;
+}
+
+#author {
+    padding-left: 15%;
 }

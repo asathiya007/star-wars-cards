@@ -12,7 +12,10 @@ const Logo = () => {
                         className="br4"/>
                 </div>
             </Tilt>
-            <h1 id="title" className="f1 pa3">Star Wars Cards</h1>
+            <div className="title-header">
+                <h1 id="title" className="f1 pa3">Star Wars Cards</h1>
+                <h3 className="tl" id="author">By Akshay Sathiya</h3>
+            </div>
         </div>
     );
 };
