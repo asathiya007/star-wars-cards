@@ -39,7 +39,7 @@ class App extends React.Component {
         continue; 
       }
 
-      const personData = await fetch(`https://swapi.co/api/people/${i}`).then(res => res.json());
+      const personData = await fetch(`https://swapi.dev/api/people/${i}`).then(res => res.json());
       const name = personData.name; 
       const worldData = await fetch(personData.homeworld).then(res => res.json());
       const world = worldData.name;
